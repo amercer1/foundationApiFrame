@@ -49,37 +49,26 @@ if($resultStatus['http_code'] == 200) {
   $TOKEN=$handled_json['result']['token'];
   $_SESSION['token']=$TOKEN;
 
-  header( 'Location: page1.php');         
+  $arr = array('valid' => 1);
+
+  echo json_encode($arr);
+
+  //header( 'Location: page1.php');         
 
 } else if($resultStatus['http_code'] == 401){
-    
-   /*
-   echo 'Login Failed ';
+ 
 
-    echo'<form class="form-horizontal" action="process.php" method="post">
-  <div class="control-group">
-    <label class="control-label" name="login"for="login">Email</label>
-    <div class="controls">
-      <input type="text" name="login" id="login" placeholder="Username">
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" name="password" for="password">Password</label>
-    <div class="controls">
-      <input type="password" name="password" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <button type="submit" class="btn">Sign in</button>
-    </div>
-  </div>
-</form>';
+  $arr = array('valid' => 0);
+  echo json_encode($arr); 
+   /*
  */
-	header( 'Location: login.php');
+//	header( 'Location: login.php');
 } else{
 
-    echo 'Login Failed '.print_r($resultStatus);
+  $arr = array('valid' => 0);
+
+  echo json_encode($arr);
+//    echo 'Login Failed '.print_r($resultStatus);
 }
 
 //Destroy php curl object

@@ -4,6 +4,8 @@
 	<title>Login Page</title>
         <link href="css/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<script type="text/javascript" src="processLogin.js"></script>
+
 </head>
 <body>
 
@@ -13,7 +15,7 @@ info in $_POST object-->
 
 <h2>APP TITLE HERE</h2>
 <br />
-<form class="form-horizontal" action="processLogin.php" method="post">
+<form class="form-horizontal" action="processLogin.php" method="post" onsubmit="processLogin()">
  
   <!-- Style div  -->
   <div class="control-group">
@@ -21,7 +23,7 @@ info in $_POST object-->
     <label class="control-label" name="login"for="login">iPlant Username</label>
     <div class="controls">
 	<!-- username inputbox -->
-      <input type="text" name="login" id="login" placeholder="Username">
+      <input type="text" name="inputLogin" id="inputLogin" placeholder="Username">
     </div>
   </div>
  
