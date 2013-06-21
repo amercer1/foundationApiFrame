@@ -10,7 +10,7 @@ Dir.open(Dir.pwd).each do |file_name|
   if !File.directory? file_name
      text = File.read(file_name)
      replace = text.gsub!(@original_string_or_regex, @replacement_string)
-     if(file_name =="job.php" and replace !=nil)
+     if((file_name =="page1process.php" or file_name =="page2process.php")  and replace !=nil)
        File.open("job.php", "w") { |file| file.puts replace }
      end
   end
