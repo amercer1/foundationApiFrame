@@ -1,6 +1,9 @@
 <?php
 
+
+//Here you can have the script send you an email like below, or you could have it run more scripts to run more jobs, thuse creating a pipeline
 // The message you wish to send. Somehow replace with job_id
+
 
 $message = "Your job has finished\n";
 

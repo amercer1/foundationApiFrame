@@ -1,66 +1,37 @@
-function processLogin(){
+var request;
 
-	var login = document.getElementById("inputLogin");
-	var loginInput = login.value;
+$("form").on("submit" , function(event) {
 
-	var password = document.getElementBy("inputPassword");
+  /* stop form from submitting normally */
+  event.preventDefault();
 
-	var passwordInput = password.value;
+  /* get some values from elements on the page: */
+   var values = $(this).serialize();
 
-  var xmlhttp;  // The variable that makes Ajax possible!
-
-  try{
-    // Opera 8.0+, Firefox, Safari
-    xmlhttp = new XMLHttpRequest();
-  } catch (e){
-    // Internet Explorer Browsers
-    try{
-      xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-      try{
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (e){
-        // Something went wrong
-        alert("Your browser broke!");
-        return false;
-      }
-    }
-  }
-  // Create a function that will receive data sent from the server
-  xmlhttp.onreadystatechange = function(){
-    if(xmlhttp.readyState == 4){
-      var retultDiv = document.getElementById('resultDiv');
-      var responseText = xmlhttp.responseText;
-      console.log("WHAT WE GOT: " + responseText);
-      if(responseText != ""){
-      	responseText = JSON.parse(xmlhttp.responseText);
-
-/*
-	if(searchValue == ""){
-	resultDiv.innerHTML = "";
-				}
-				else{
-					var newline = "";
-      		var numberOfReturnedResults= 0;
-					for(x in responseText){
-						newline = newline + "<div class=searchResult onclick=clickedDiv(\""+ responseText[x] +"\")>" + responseText[x] + "<br /></div>";
-						numberOfReturnedResults++;
-					}
-					if(numberOfReturnedResults >0){
-       			resultDiv.innerHTML =  newline;
+  /* Send the data using post and put the results in a div */
+   request = $.ajax({
+      url: "processLogin.php",
+      type: "post",
+      data: values,
+      success: function(response){
+					
+					var obj = JSON.parse(response);
+					
+					if(obj.valid == 1){
+						window.location = "page1.php";
 					}
 					else{
-  					resultDiv.innerHTML = "";
+						//Change Login in 
+						//console.log(response);
+					 
+						$('<div class="control-group"><!-- label  --><label class="control-label">Incorrect Username/Password</label></div>').insertBefore('#labelDiv');	
+						$("#encassedDiv").attr('class', 'control-group error');
 					}
-      	}
+      },
+      error:function(){
+          //$("#result").html('there is error while submit');
+      }   
+    });
 
-*/
-      }
-
-    }
-  }
-  var query = "?login=" + loginInput + "&password=" + passwordInput;
-  xmlhttp.open("GET","getterms.php" + query,true);
-  xmlhttp.send();
-}
-
+   
+});

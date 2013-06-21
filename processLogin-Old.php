@@ -21,9 +21,10 @@ $auth_url = 'http://foundation.iplantc.org/auth-v1/';
 
 //Set php curl options. 
 curl_setopt($ch, CURLOPT_URL,$auth_url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+curl_setopt($ch, CURLOPT_POST, true);
 $ch_values = "$username:$password";
 curl_setopt($ch, CURLOPT_USERPWD, $ch_values);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 // Getting results
 
 //Execute the php curl and grab the response 
@@ -45,21 +46,26 @@ if($resultStatus['http_code'] == 200) {
 
   echo json_encode($arr);
 
+  //header( 'Location: page1.php');         
+
 } else if($resultStatus['http_code'] == 401){
  
 
-  $arr = array('valid' => 2);
-  echo json_encode($arr);
-	//echo 'Login Failed '.print_r($resultStatus); 
+  $arr = array('valid' => 0);
+  echo json_encode($arr); 
+   /*
+ */
+//	header( 'Location: login.php');
 } else{
 
-  $arr = array('valid' => 3);
+  $arr = array('valid' => 0);
 
   echo json_encode($arr);
-  //echo 'Login Failed '.print_r($resultStatus);
+//    echo 'Login Failed '.print_r($resultStatus);
 }
 
 //Destroy php curl object
 curl_close ($ch);
+
 ?>
 
