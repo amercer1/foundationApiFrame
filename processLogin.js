@@ -1,5 +1,5 @@
 var request;
-
+var toggle = 0;
 $("form").on("submit" , function(event) {
 
   /* stop form from submitting normally */
@@ -23,9 +23,11 @@ $("form").on("submit" , function(event) {
 					else{
 						//Change Login in 
 						//console.log(response);
-					 
-						$('<div class="control-group"><!-- label  --><label class="control-label">Incorrect Username/Password</label></div>').insertBefore('#labelDiv');	
-						$("#encassedDiv").attr('class', 'control-group error');
+					 	if(toggle == 0){
+							$('<div class="control-group"><!-- label  --><label class="control-label">Incorrect Username/Password</label></div>').insertBefore('#labelDiv');	
+							$("#encassedDiv").attr('class', 'control-group error');
+							toggle = 1;
+						}
 					}
       },
       error:function(){
