@@ -13,6 +13,8 @@
 info in $_POST object-->
 <div class="span4">
 
+
+<!-- TODO change app title  -->
 <h2>APP TITLE HERE</h2>
 <br />
 <form class="form-horizontal" id="loginForm" >

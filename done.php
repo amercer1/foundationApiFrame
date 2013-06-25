@@ -18,7 +18,7 @@ foreach($_POST as $name => $value) {
 $message = wordwrap($message, 70, "\r\n");
 
 // Send it to the hard coded email. Make sure you change this
-mail('mailAddress', 'Gene-Seqer 5.0 completed', $message);
+mail('emailAddress', 'Gene-Seqer 5.0 completed', $message);
 
 ?>
 

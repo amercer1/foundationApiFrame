@@ -11,3 +11,5 @@ To help setup some user specific details, use the ruby install script. It takes 
 
 For example:
 ```ruby install.rb http://128.196.142.30 mail@example.com```
+
+If you choose not to use the install script, make sure to replace 'URLHERE' in files page1process.org and page2.process.org. In addition, replace 'emailAddress' with your proper email.

@@ -1,6 +1,7 @@
 <header>
   <div class="navbar">
     <div class="navbar-inner">
+			<!-- TODO change app title  -->
       <a class="brand" href="#">APP NAME HERE</a>
       <ul class="nav">
         <li><a href="page1.php">Page 1</a></li>

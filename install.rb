@@ -18,7 +18,7 @@ end
 
 # This will swap out arguemnt 1 for the email address.
 
-@original_mail = /(mailAddress)/
+@original_mail = /(emailAddress)/
 @replacement_mail = ARGV[1] 
 Dir.open(Dir.pwd).each do |file_name|
   if !File.directory? file_name
